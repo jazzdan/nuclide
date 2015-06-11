@@ -301,11 +301,7 @@ def install_dependencies(package_config, npm):
     for local_dependency, local_dependency_config in package_config['localDependencies'].items():
         src_dir = local_dependency_config['packageRootAbsolutePath']
         dest_dir = os.path.join(src_path, 'node_modules', local_dependency)
-        if platform_checker.is_windows():
-            shutil.rmtree(dest_dir, ignore_errors=True)
-            shutil.copytree(src_dir, dest_dir)
-        else:
-            symlink(src_dir, dest_dir)
+        symlink(src_dir, dest_dir)
         link_dependencys_executable(src_path, local_dependency)
 
     # Install other public node dependencies.
