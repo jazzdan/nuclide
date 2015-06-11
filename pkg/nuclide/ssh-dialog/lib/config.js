@@ -12,7 +12,8 @@
 var path = require('path');
 
 function getConnectionDialogDefaultSettings(): any {
-  var username = process.env.USER;
+  // Windows uses %USERNAME% instead of $USER.
+  var username = process.env['USER'] || process.env['USERNAME'];
   return {
     host: '',
     username: username,
