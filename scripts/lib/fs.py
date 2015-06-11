@@ -45,7 +45,7 @@ def symlink(src, dest):
         os.path.realpath(os.path.join(dest_dir, src)) != os.path.realpath(dest)):
         try:
             if platform_checker.is_windows() and os.path.isdir(src):
-                cross_platform_check_output(['mklink', '/D', dest, src])
+                cross_platform_check_output(['mklink', '/J', '/D', dest, src])
             else:
                 os.symlink(src, dest)
         except OSError as e:
