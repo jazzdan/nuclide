@@ -303,7 +303,7 @@ class NuclideServer {
         this._webServer.removeAllListeners();
         reject(e);
       });
-      this._webServer.listen(this._port, '::');
+      this._webServer.listen(this._port);
     });
   }
 
